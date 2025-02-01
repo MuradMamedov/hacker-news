@@ -30,4 +30,14 @@ public class NewsController : ControllerBase
 
         return Mappings.Mapper.Map<StoryResponse>(dto);
     }
+
+    [HttpGet("best/{number}", Name = nameof(GetBestStories))]
+    public async Task<IEnumerable<BestStoryResponse>> GetBestStories(int number)
+    {
+        var bestStories = await _hackerNewsService.GetBestStoriesAsync();
+        var tasks = bestStories.Select(id => _hackerNewsService.GetStoryAsync(id));
+        var stories = await Task.WhenAll(tasks);
+
+        return stories.OrderByDescending(s => s.Score).Take(number).Select(Mappings.Mapper.Map<BestStoryResponse>);
+    }
 }

@@ -13,8 +13,11 @@ internal static class Mappings
     {
         var config = new MapperConfiguration(cfg =>
         {
-
             cfg.CreateMap<StoryDto, StoryResponse>();
+            cfg.CreateMap<StoryDto, BestStoryResponse>()
+            .ForMember(dest => dest.CommentCount, opt => opt.MapFrom(src => src.Kids.Count))
+            .ForMember(dest => dest.PostedBy, opt => opt.MapFrom(src => src.By))
+            .ForMember(dest => dest.Uri, opt => opt.MapFrom(src => src.Url));
         });
 
         var mapper = config.CreateMapper();
