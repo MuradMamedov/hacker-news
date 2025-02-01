@@ -1,11 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\hacker-news\hacker-news.csproj" />
+    <PackageReference Include="NUnit" Version="4.3.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="NUnit" Version="4.3.2" />
+    <ProjectReference Include="..\hacker-news.core\hacker-news.core.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

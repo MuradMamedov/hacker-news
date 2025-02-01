@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace hacker_news.nunit;
+namespace HackerNews.Nunit;
 
 [TestFixture]
 public class NewsControllerTests

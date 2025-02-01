@@ -1,46 +1,33 @@
-using System.Text.Json;
-using hacker_news.Models;
+using HackerNews.Models;
 using Microsoft.AspNetCore.Mvc;
+using HackerNews.Core.Services;
 
-namespace hacker_news.Controllers
+namespace HackerNews.Controllers;
+
+[ApiController]
+[Route("[controller]")]
+public class NewsController : ControllerBase
 {
-    [ApiController]
-    [Route("[controller]")]
-    public class NewsController : ControllerBase
+    private readonly ILogger<NewsController> _logger;
+    private readonly INewsService _hackerNewsService;
+
+    public NewsController(ILogger<NewsController> logger, INewsService hackerNewsService)
     {
-        private readonly ILogger<NewsController> _logger;
-        private readonly IHttpClientFactory _httpClientFactory;
+        _logger = logger;
+        _hackerNewsService = hackerNewsService;
+    }
 
-        public NewsController(ILogger<NewsController> logger, IHttpClientFactory httpClientFactory)
-        {
-            _logger = logger;
-            _httpClientFactory = httpClientFactory;
-        }
+    [HttpGet(Name = nameof(BestStories))]
+    public Task<IEnumerable<int>> BestStories()
+    {
+        return _hackerNewsService.GetBestStoriesAsync();
+    }
 
-        [HttpGet(Name = nameof(BestStories))]
-        public IEnumerable<int> BestStories()
-        {
-            var httpClient = _httpClientFactory.CreateClient(HackerNewsConstants.HttpClientName);
-            var response = httpClient.GetAsync(HackerNewsConstants.Endpoints.BestStories).Result;
-            response.EnsureSuccessStatusCode();
+    [HttpGet("{id}", Name = nameof(GetStory))]
+    public async Task<StoryResponse> GetStory(int id)
+    {
+        var dto = await _hackerNewsService.GetStoryAsync(id);
 
-            var responseBody = response.Content.ReadAsStringAsync().Result;
-            var bestStories = JsonSerializer.Deserialize<IEnumerable<int>>(responseBody);
-
-            return bestStories;
-        }
-
-        [HttpGet("{id}", Name = nameof(GetStory))]
-        public async Task<StoryResponse> GetStory(int id)
-        {
-            var httpClient = _httpClientFactory.CreateClient(HackerNewsConstants.HttpClientName);
-            var response = await httpClient.GetAsync($"item/{id}.json");
-            response.EnsureSuccessStatusCode();
-
-            var responseBody = await response.Content.ReadAsStringAsync();
-            var story = JsonSerializer.Deserialize<StoryResponse>(responseBody);
-
-            return story;
-        }
+        return Mappings.Mapper.Map<StoryResponse>(dto);
     }
 }

@@ -1,5 +1,8 @@
 
-namespace hacker_news
+using HackerNews.Core.External;
+using HackerNews.Core.Services;
+
+namespace HackerNews
 {
     public class Program
     {
@@ -17,6 +20,8 @@ namespace hacker_news
 
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddScoped<INewsService, HackerNewsService>();
 
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
@@ -41,7 +46,6 @@ namespace hacker_news
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
 
             app.MapControllers();
 

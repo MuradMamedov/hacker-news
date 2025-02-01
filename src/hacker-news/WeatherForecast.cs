@@ -1,4 +1,4 @@
-namespace hacker_news
+namespace HackerNews
 {
     public class WeatherForecast
     {

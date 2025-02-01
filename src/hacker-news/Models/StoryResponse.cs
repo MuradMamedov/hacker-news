@@ -1,4 +1,4 @@
-namespace hacker_news.Models;
+namespace HackerNews.Models;
 
 public class StoryResponse
 {
