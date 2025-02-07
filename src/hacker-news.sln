@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hacker-news.nunit", "hacker
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hacker-news.core", "hacker-news.core\hacker-news.core.csproj", "{CAF104DE-058E-4DC0-86D3-BC38984DC1DE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hacker-news.nunit.integration", "hacker-news.nunit.integration\hacker-news.nunit.integration.csproj", "{FEA07264-B468-48EF-8807-8CC5B039FBE4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{CAF104DE-058E-4DC0-86D3-BC38984DC1DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CAF104DE-058E-4DC0-86D3-BC38984DC1DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CAF104DE-058E-4DC0-86D3-BC38984DC1DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEA07264-B468-48EF-8807-8CC5B039FBE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEA07264-B468-48EF-8807-8CC5B039FBE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEA07264-B468-48EF-8807-8CC5B039FBE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEA07264-B468-48EF-8807-8CC5B039FBE4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
