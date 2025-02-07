@@ -45,7 +45,7 @@ public class HackerNewsService : INewsService
                 PropertyNameCaseInsensitive = true
             });
 
-            _memoryCache.Set(id, story, TimeSpan.FromMinutes(5));
+            _memoryCache.Set(id, story, TimeSpan.FromMinutes(CacheExpirationInMinutes));
         }
         return story;
     }

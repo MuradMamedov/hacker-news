@@ -17,8 +17,8 @@ public class NewsController : ControllerBase
         _hackerNewsService = hackerNewsService;
     }
 
-    [HttpGet(Name = nameof(BestStories))]
-    public Task<IEnumerable<int>> BestStories()
+    [HttpGet("bestIds", Name = nameof(GetBestStoriesIds))]
+    public Task<IEnumerable<int>> GetBestStoriesIds()
     {
         return _hackerNewsService.GetBestStoriesAsync();
     }
@@ -31,8 +31,8 @@ public class NewsController : ControllerBase
         return Mappings.Mapper.Map<StoryResponse>(dto);
     }
 
-    [HttpGet("best/{number}", Name = nameof(GetBestStories))]
-    public async Task<IEnumerable<BestStoryResponse>> GetBestStories(int number)
+    [HttpGet("top/{number}", Name = nameof(GetToptStories))]
+    public async Task<IEnumerable<BestStoryResponse>> GetToptStories(int number)
     {
         var bestStories = await _hackerNewsService.GetBestStoriesAsync();
         var tasks = bestStories.Select(id => _hackerNewsService.GetStoryAsync(id));

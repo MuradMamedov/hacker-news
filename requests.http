@@ -1,0 +1,9 @@
+GET http://localhost:8080/News/bestIds
+
+###
+
+GET http://localhost:8080/News/42905937
+
+###
+
+GET http://localhost:8080/News/top/10
