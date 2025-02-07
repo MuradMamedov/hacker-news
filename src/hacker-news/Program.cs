@@ -23,7 +23,7 @@ namespace HackerNews
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            builder.Services.AddScoped<INewsService, HackerNewsService>();
+            builder.Services.AddSingleton<INewsService, HackerNewsService>();
 
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
