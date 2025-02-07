@@ -12,7 +12,9 @@ namespace HackerNews
 
             // Add services to the container.
 
+            builder.Services.AddMemoryCache();
             builder.Services.AddControllers();
+
             builder.Services.AddHttpClient(HackerNewsConstants.HttpClientName, httpClient =>
             {
                 httpClient.BaseAddress = new Uri(HackerNewsConstants.BaseAddress);

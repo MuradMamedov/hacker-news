@@ -6,4 +6,4 @@ GET http://localhost:8080/News/42853633
 
 ###
 
-GET http://localhost:8080/News/best/10
+GET http://localhost:8080/News/best/100
